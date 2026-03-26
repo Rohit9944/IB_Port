@@ -28,7 +28,7 @@
       </button>
     </div>
     <div>
-      <a class="navbar-brand brand-logo" href="index.html">
+      <a class="navbar-brand brand-logo" href="{{ route('freight.dashboard') }}">
         <img src="{{asset('/assets/images/logo.svg')}}" alt="IBPortDash" />
       </a>
     </div>

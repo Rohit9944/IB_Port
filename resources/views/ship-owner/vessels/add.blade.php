@@ -83,7 +83,7 @@
 
 <button class="btn btn-primary">Save Vessel</button>
 
-<a href="my-vessels.php" class="btn btn-secondary">
+<a href="{{ route('ship.vessels') }}" class="btn btn-secondary">
 Cancel
 </a>
 

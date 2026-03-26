@@ -11,7 +11,7 @@
         <p>Manage all customer details in one place</p>
       </div>
       <div class="col-lg-6 text-right d-flex align-items-center justify-content-end headerBtn">
-        <a href="add.html" class="btn btn-primary px-2"><i class="mdi mdi-plus"></i> Add Vessel</a>
+        <a href="{{ route('ship.settings') }}" class="btn btn-primary px-2"><i class="mdi mdi-plus"></i> Add Vessel</a>
       </div>
     </div>
 

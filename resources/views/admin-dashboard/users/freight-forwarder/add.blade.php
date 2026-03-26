@@ -79,7 +79,7 @@
 Save Broker
 </button>
 
-<a href="brokers.php" class="btn btn-secondary">
+<a href="{{ route('admin.users.freight-forwarder') }}" class="btn btn-secondary">
 Cancel
 </a>
 

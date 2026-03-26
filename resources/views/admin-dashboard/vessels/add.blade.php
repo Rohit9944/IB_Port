@@ -94,7 +94,7 @@
 
 <button class="btn btn-primary">Save Vessel</button>
 
-<a href="vessels.php" class="btn btn-secondary">Cancel</a>
+<a href="{{ route('admin.vessels.index') }}" class="btn btn-secondary">Cancel</a>
 
 </div>
 

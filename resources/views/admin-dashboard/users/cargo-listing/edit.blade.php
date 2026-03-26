@@ -83,7 +83,7 @@
 
 <button class="btn btn-primary">Update Cargo</button>
 
-<a href="cargo-listings.php" class="btn btn-secondary">
+<a href="{{ route('admin.users.cargo-listing') }}" class="btn btn-secondary">
 Cancel
 </a>
 

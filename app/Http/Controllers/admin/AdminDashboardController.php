@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Vessel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminDashboardController extends Controller
 {
@@ -283,27 +285,33 @@ class AdminDashboardController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | VESSELS
+    | VESSELS APPROVAL
     |--------------------------------------------------------------------------
     */
 
     public function vesselsIndex()
     {
-        return view('admin-dashboard.vessels.index');
+        $pendingVessels = Vessel::pending()->with('company', 'approvedBy')->latest()->get();
+        return view('admin-dashboard.vessels.index', compact('pendingVessels'));
     }
 
-    public function vesselsAdd()
+    public function approveVessel(Vessel $vessel)
     {
-        return view('admin-dashboard.vessels.add');
+        $vessel->update([
+            'status' => Vessel::STATUS_APPROVED,
+            'approved_by' => auth()->id(),
+            'approved_at' => now(),
+        ]);
+
+        return redirect()->back()->with('success', 'Vessel approved successfully.');
     }
 
-    public function vesselsEdit()
+    public function rejectVessel(Vessel $vessel)
     {
-        return view('admin-dashboard.vessels.edit');
-    }
+        $vessel->update([
+            'status' => Vessel::STATUS_REJECTED,
+        ]);
 
-    public function vesselsView()
-    {
-        return view('admin-dashboard.vessels.view');
+        return redirect()->back()->with('error', 'Vessel rejected.');
     }
 }

@@ -26,7 +26,7 @@
             </button>
           </div>
           <div>
-            <a class="navbar-brand brand-logo" href="index.html">
+            <a class="navbar-brand brand-logo" href="<?php echo e(route('ship.dashboard')); ?>">
               <img src="<?php echo e(asset('assets/dashboard/images/logo.svg')); ?>" alt="IBPortDash" />
             </a>
           </div>

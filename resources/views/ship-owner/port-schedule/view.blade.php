@@ -10,7 +10,7 @@
           
         </div>
         <div class="col-lg-6 text-right d-flex align-items-center justify-content-end headerBtn gap-3">
-          <a href="add.html" class="btn btn-primary"><i class="mdi mdi-plus"></i>Edit</a>
+          <a href="{{ route('ship.port-schedule') }}" class="btn btn-primary"><i class="mdi mdi-plus"></i>Edit</a>
           <a href="#" class="btn btn-secondary"><i class="mdi mdi-keyboard-backspace"></i> Back</a>
         </div>
 

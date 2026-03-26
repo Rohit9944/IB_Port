@@ -10,7 +10,7 @@
         </div>
         <div class="col-lg-6 text-right d-flex align-items-center justify-content-end headerBtn gap-3">
            <span class="btn bg-success text-white">Active</span>
-          <a href="add.html" class="btn btn-primary">Download</a>
+          <a href="{{ route('ship.contracts') }}" class="btn btn-primary">Download</a>
           <a href="#" class="btn btn-secondary">E-Sign</a>
 
           

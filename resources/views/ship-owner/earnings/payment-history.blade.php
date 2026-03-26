@@ -57,7 +57,7 @@
 
 <td>
 
-<a href="payment-view.php" class="btn btn-info btn-sm">
+<a href="#" class="btn btn-info btn-sm">
 View
 </a>
 
@@ -87,7 +87,7 @@ View
 
 <td>
 
-<a href="payment-view.php" class="btn btn-info btn-sm">
+<a href="#" class="btn btn-info btn-sm">
 View
 </a>
 

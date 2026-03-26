@@ -90,7 +90,7 @@
 
 <button class="btn btn-primary">Update RFQ</button>
 
-<a href="rfq-requests.php" class="btn btn-secondary">
+<a href="{{ route('admin.rfq-requests.index') }}" class="btn btn-secondary">
 Cancel
 </a>
 

@@ -79,7 +79,7 @@
 Submit Quote
 </button>
 
-<a href="rfq-responses.php" class="btn btn-secondary">
+<a href="{{ route('ship.rfq-requests') }}" class="btn btn-secondary">
 Cancel
 </a>
 

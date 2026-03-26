@@ -101,7 +101,7 @@
 
 <button class="btn btn-primary">Update Contract</button>
 
-<a href="contracts.php" class="btn btn-secondary">
+<a href="{{ route('admin.contracts.index') }}" class="btn btn-secondary">
 Cancel
 </a>
 

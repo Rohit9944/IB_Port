@@ -118,7 +118,7 @@ Handle with care. Cargo must be protected from moisture.
 
 <button class="btn btn-primary">Update Request</button>
 
-<a href="cargo-requests.php" class="btn btn-secondary">
+<a href="{{ route('cargo.shipments') }}" class="btn btn-secondary">
 Cancel
 </a>
 

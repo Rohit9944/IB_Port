@@ -81,7 +81,7 @@
 Save Ship Owner
 </button>
 
-<a href="ship-owners.php" class="btn btn-secondary">
+<a href="{{ route('ship.cargo-requests') }}" class="btn btn-secondary">
 Cancel
 </a>
 

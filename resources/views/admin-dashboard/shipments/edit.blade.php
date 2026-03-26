@@ -80,7 +80,7 @@
 
 <button class="btn btn-primary">Update Shipment</button>
 
-<a href="shipments.php" class="btn btn-secondary">
+<a href="{{ route('admin.shipments.index') }}" class="btn btn-secondary">
 Cancel
 </a>
 

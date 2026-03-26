@@ -11,76 +11,80 @@ use App\Models\Company;
 
 class AuthController extends Controller
 {
-    // Show registration form
     public function showRegister()
     {
         return view('auth.register');
     }
 
-    // Handle registration
     public function register(Request $request)
-{
-    $request->validate([
-        'first_name'   => 'required|string|max:255',
-        'last_name'    => 'required|string|max:255',
-        'email'        => 'required|email|unique:users',
-        'company_name' => 'required|string|max:255',
-        'company_type' => 'required|in:cargo_owner,ship_owner,broker',
-        'country'      => 'required|string|max:100',
-        'password'     => 'required|min:6',
-    ]);
-
-    DB::beginTransaction();
-
-    try {
-        // Create company
-        $company = Company::create([
-            'name'    => $request->company_name,
-            'type'    => $request->company_type,
-            'country' => $request->country,
+    {
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'email'      => 'required|email|unique:users,email',
+            'role'       => 'required|in:cargo_owner,ship_owner,broker',
+            'company_name' => 'required_if:role,cargo_owner|nullable|string|max:255',
+            'password'   => 'required|min:8|confirmed',
         ]);
 
-        // Create user
-        $user = User::create([
-            'company_id' => $company->id,
-            'first_name' => $request->first_name,
-            'last_name'  => $request->last_name,
-            'name'       => $request->first_name . ' ' . $request->last_name,
-            'email'      => $request->email,
-            'role'       => $request->company_type,
-            'password'   => Hash::make($request->password),
-        ]);
+        try {
+            DB::beginTransaction();
 
-        DB::commit();
+            // Company create
+            $companyName = $request->company_name ?? 'N/A';
 
-        // Auto-login
-        Auth::login($user);
+            $company = Company::create([
+                'name' => $companyName,
+                'type' => $request->role,
+                'country' => 'India',
+            ]);
 
-        // Role-based redirect
-        $redirect = match($user->role) {
-            'cargo_owner' => redirect()->route('cargo.dashboard'),
-            'ship_owner'  => redirect()->route('ship.dashboard'),
-            'broker'      => redirect()->route('broker.dashboard'),
-            default       => redirect()->route('home'),
-        };
+            // User create
+            $user = User::create([
+                'company_id' => $company->id,
+                'first_name' => $request->first_name,
+                'last_name'  => $request->last_name,
+                'name'       => $request->first_name . ' ' . $request->last_name,
+                'email'      => $request->email,
+                'role'       => $request->role, // ✅ FIXED
+                'password'   => Hash::make($request->password),
+            ]);
 
-        return $redirect->with('success', 'Account created successfully!');
+            DB::commit();
 
-    } catch (\Exception $e) {
-        DB::rollBack();
-        return back()
-            ->with('error', 'Registration failed: ' . $e->getMessage())
-            ->withInput();
+            Auth::login($user);
+
+            // ✅ FIXED REDIRECTION FLOW
+            if ($user->role === 'cargo_owner') {
+                if (!$user->is_prevetting_complete) {
+                    return redirect()->route('prevetting.index')->with('info', 'Please complete pre-vetting.');
+                }
+                return redirect()->route('cargo.dashboard');
+            }
+
+            if ($user->role === 'ship_owner') {
+                return redirect()->route('ship.dashboard');
+            }
+
+            if ($user->role === 'broker') {
+                return redirect()->route('freight.dashboard');
+            }
+
+            return redirect('/');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            return back()
+                ->with('error', 'Registration failed: ' . $e->getMessage())
+                ->withInput();
+        }
     }
-}
 
-    // Show login form
     public function showLogin()
     {
         return view('auth.login');
     }
 
-    // Handle login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -88,33 +92,41 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-       if (Auth::attempt($credentials, $request->boolean('remember'))) {
-    $request->session()->regenerate();
-    $user = Auth::user();
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
+            $request->session()->regenerate();
+            $user = Auth::user();
 
-    // Role-based redirect
-    $redirect = match($user->role) {
-        'cargo_owner' => redirect()->route('cargo.dashboard'),
-        'ship_owner'  => redirect()->route('ship.dashboard'),
-        'broker'      => redirect()->route('broker.dashboard'),
-        default       => redirect()->route('dashboard'),
-    };
+            // ✅ PREVETTING CHECK
+            if ($user->role === 'cargo_owner' && !$user->is_prevetting_complete) {
+                return redirect()->route('prevetting.index')->with('info', 'Please complete pre-vetting first.');
+            }
 
-    return $redirect->with('success', 'Welcome back!');
-}
+            // Role redirect
+            if ($user->role === 'cargo_owner') {
+                return redirect()->route('cargo.dashboard');
+            }
+
+            if ($user->role === 'ship_owner') {
+                return redirect()->route('ship.dashboard');
+            }
+
+            if ($user->role === 'broker') {
+                return redirect()->route('freight.dashboard');
+            }
+
+            return redirect('/');
+        }
 
         return back()->withErrors([
-            'email' => 'Invalid credentials'
+            'email' => 'Invalid credentials.'
         ])->onlyInput('email');
     }
 
-    // Show email verification
     public function showVerification()
     {
         return view('auth.verify-email');
     }
 
-    // Logout
     public function logout(Request $request)
     {
         Auth::logout();

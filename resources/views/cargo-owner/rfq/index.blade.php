@@ -10,7 +10,7 @@
         <h1 class="mb-0 mainHeading font-weight-bolder">RFQ</h1>
       </div>
       <div class="col-lg-6 text-right d-flex align-items-center justify-content-end headerBtn">
-        <a href="add.html" class="btn btn-primary px-2"><i class="mdi mdi-plus"></i> Create RFQ</a>
+        <a href="{{ route('cargo.rfq.add') }}" class="btn btn-primary px-2"><i class="mdi mdi-plus"></i> Create RFQ</a>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
                     <td>
                       <div class="actionBtn d-flex align-items-center justify-content-center gap-1">
                     <button class="btn btn-outline-secondary btn-fw" data-bs-toggle="modal" data-bs-target="#editModal"><i class="mdi mdi-eye"></i></button>
-                    <a href="add-edit-customer-master.html" class="btn btn-outline-warning btn-fw"><i class="mdi mdi-lead-pencil"></i></a>
+                    <a href="{{ route('cargo.rfq.view') }}" class="btn btn-outline-warning btn-fw"><i class="mdi mdi-lead-pencil"></i></a>
                     <button class="btn btn-outline-danger btn-fw"><i class="mdi mdi-delete"></i></button>
                 </div>
                     </td>
@@ -57,7 +57,7 @@
                     <td>
                       <div class="actionBtn d-flex align-items-center justify-content-center gap-1">
                     <button class="btn btn-outline-secondary btn-fw" data-bs-toggle="modal" data-bs-target="#editModal"><i class="mdi mdi-eye"></i></button>
-                    <a href="add-edit-customer-master.html" class="btn btn-outline-warning btn-fw"><i class="mdi mdi-lead-pencil"></i></a>
+                    <a href="{{ route('cargo.rfq.view') }}" class="btn btn-outline-warning btn-fw"><i class="mdi mdi-lead-pencil"></i></a>
                     <button class="btn btn-outline-danger btn-fw"><i class="mdi mdi-delete"></i></button>
                 </div>
                     </td>

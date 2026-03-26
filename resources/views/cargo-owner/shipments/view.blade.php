@@ -10,7 +10,7 @@
         <h1 class="mb-0 mainHeading font-weight-bolder">Shipment Details</h1>
       </div>
       <div class="col-lg-6 text-right d-flex align-items-center justify-content-end headerBtn gap-3">
-        <a href="add.html" class="btn btn-primary"><i class="mdi mdi-plus"></i>Create RFQ</a>
+        <a href="{{ route('cargo.shipments.edit') }}" class="btn btn-primary"><i class="mdi mdi-plus"></i>Create RFQ</a>
         <a href="#" class="btn btn-secondary"><i class="mdi mdi-keyboard-backspace"></i> Back</a>       
       </div>
       

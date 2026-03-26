@@ -86,7 +86,7 @@
 Update Operation
 </button>
 
-<a href="port-operations.php" class="btn btn-secondary">
+<a href="{{ route('admin.port-operations.index') }}" class="btn btn-secondary">
 Cancel
 </a>
 

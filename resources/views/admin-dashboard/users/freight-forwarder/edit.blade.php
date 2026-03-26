@@ -80,7 +80,7 @@
 Save Ship Owner
 </button>
 
-<a href="ship-owners.php" class="btn btn-secondary">
+<a href="{{ route('admin.users.freight-forwarder') }}" class="btn btn-secondary">
 Cancel
 </a>
 

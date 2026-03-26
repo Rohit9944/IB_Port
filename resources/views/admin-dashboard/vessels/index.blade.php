@@ -1,107 +1,167 @@
-
 @include('admin-dashboard.include.header')
 
 <div class="container-fluid page-body-wrapper">
-@include('admin-dashboard.include.sidebar')
-<div class="main-panel dashboard-page">
-  <div class="content-wrapper">
-    <div class="row dashboard-card-top d-flex align-items-center mb-4">
-      <div class="text-start col-lg-6">
-        <h1 class="mb-0 mainHeading font-weight-bolder">Vessels Management</h1>
-        
-      </div>
-      <div class="col-lg-6 text-right d-flex align-items-center justify-content-end headerBtn">
-        <a href="add.html" class="btn btn-primary px-2"><i class="mdi mdi-plus"></i> Add Vessel</a>
-      </div>
-    </div>
+    
+    @include('admin-dashboard.include.sidebar')
 
+    <div class="main-panel">
+        <div class="content-wrapper">
 
-    <div class="row flex-grow">
-      <div class="table-responsive  mt-1">
-     
-           <table class="table table-bordered align-middle">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="page-title mb-0">
+                    Vessels Management 
+                </h3>
+            </div>
 
+            <div class="card shadow-sm">
+                
+                {{-- TABS --}}
+                <!-- <div class="card-header bg-white">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link {{ $status == 'all' ? 'active' : '' }}" href="?status=all">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ $status == 'pending' ? 'active' : '' }}" href="?status=pending">
+                                Pending <span class="badge bg-warning">{{ $statusCounts['pending'] }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ $status == 'approved' ? 'active' : '' }}" href="?status=approved">
+                                Approved <span class="badge bg-success">{{ $statusCounts['approved'] }}</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ $status == 'rejected' ? 'active' : '' }}" href="?status=rejected">
+                                Rejected <span class="badge bg-danger">{{ $statusCounts['rejected'] }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
 
+                <div class="card-body">
 
-<thead class="table-light">
+                    {{-- ALERTS --}}
+                    @if (session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
 
-<tr>
+                    @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
 
-<th>ID</th>
-<th>Vessel Name</th>
-<th>IMO Number</th>
-<th>Type</th>
-<th>Capacity (DWT)</th>
-<th>Flag Country</th>
-<th>Current Location</th>
-<th>Status</th>
-<th>Owner</th>
-<th>Actions</th>
+                    {{-- TABLE --}}
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Owner</th>
+                                    <th>Type</th>
+                                    <th>Capacity</th>
+                                    <th>Status</th>
+                                    <th width="200">Actions</th>
+                                </tr>
+                            </thead>
 
-</tr>
+                            <tbody>
+                                @forelse($vessels as $vessel)
+                                    <tr>
+                                        <td>{{ $vessel->name }}</td>
+                                        <td>{{ $vessel->company->name ?? 'N/A' }}</td>
+                                        <td>{{ $vessel->type }}</td>
+                                        <td>
+                                            {{ $vessel->capacity ? number_format($vessel->capacity, 2) . ' DWT' : 'N/A' }}
+                                        </td>
 
-</thead>
+                                        {{-- STATUS --}}
+                                        <td>
+                                            <span class="badge bg-{{ $vessel->statusBadge() }}">
+                                                {{ ucfirst($vessel->status) }}
+                                            </span>
+                                        </td>
 
-<tbody>
+                                        {{-- ACTIONS --}}
+                                        <td>
+                                            <div class="d-flex gap-2">
 
-<tr>
+                                                <a href="{{ route('admin.vessels.show', $vessel) }}"
+                                                   class="btn btn-sm btn-outline-primary">
+                                                    View
+                                                </a>
 
-<td>1</td>
-<td>MV Atlantic Star</td>
-<td>IMO1234567</td>
-<td>Bulk Carrier</td>
-<td>52,000</td>
-<td>Panama</td>
-<td>Singapore Port</td>
-<td><span class="badge bg-success">Available</span></td>
-<td>Oceanic Shipping Ltd</td>
+                                                @if($vessel->status === 'pending')
 
-<td>
+                                                    <form method="POST"
+                                                          action="{{ route('admin.vessels.approve', $vessel) }}">
+                                                        @csrf
+                                                        <button type="submit"
+                                                                class="btn btn-sm btn-success">
+                                                            Approve
+                                                        </button>
+                                                    </form>
 
-<div class="actionBtn d-flex align-items-center justify-content-center gap-1">
-                    <button class="btn btn-outline-secondary btn-fw" data-bs-toggle="modal" data-bs-target="#editModal"><i class="mdi mdi-eye"></i></button>
-                    <a href="add-edit-customer-master.html" class="btn btn-outline-warning btn-fw"><i class="mdi mdi-lead-pencil"></i></a>
-                    <button class="btn btn-outline-danger btn-fw"><i class="mdi mdi-delete"></i></button>
+                                                    <button class="btn btn-sm btn-danger"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#rejectModal{{ $vessel->id }}">
+                                                        Reject
+                                                    </button>
+
+                                                @endif
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="text-center py-5">
+                                            <i class="mdi mdi-ship-off mdi-3x text-muted"></i>
+                                            <p class="mt-2 text-muted">No vessels found</p>
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {{-- PAGINATION --}}
+                    <div class="mt-3">
+                        {{ $vessels->appends(request()->query())->links() }}
+                    </div>
+
                 </div>
-</td>
+            </div>
 
-</tr>
-
-<tr>
-
-<td>2</td>
-<td>MV Blue Ocean</td>
-<td>IMO9876543</td>
-<td>Container Ship</td>
-<td>68,000</td>
-<td>Liberia</td>
-<td>Dubai Port</td>
-<td><span class="badge bg-warning">On Charter</span></td>
-<td>Global Marine Corp</td>
-
-<td>
-<div class="actionBtn d-flex align-items-center justify-content-center gap-1">
-                    <button class="btn btn-outline-secondary btn-fw" data-bs-toggle="modal" data-bs-target="#editModal"><i class="mdi mdi-eye"></i></button>
-                    <a href="add-edit-customer-master.html" class="btn btn-outline-warning btn-fw"><i class="mdi mdi-lead-pencil"></i></a>
-                    <button class="btn btn-outline-danger btn-fw"><i class="mdi mdi-delete"></i></button>
-                </div>
-
-</td>
-
-</tr>
-
-
-
-</tbody>
-
-                    </table>
-      </div>
+        </div>
     </div>
-  </div><!-- content-wrapper ends -->
-</div><!-- main-panel ends -->
-
 </div>
-@include('admin-dashboard.include.footer')
-                    
 
-  
+{{-- ✅ MODALS OUTSIDE TABLE (IMPORTANT FIX) --}}
+@foreach($vessels as $vessel)
+<div class="modal fade" id="rejectModal{{ $vessel->id }}" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reject {{ $vessel->name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <form method="POST" action="{{ route('admin.vessels.reject', $vessel) }}">
+                @csrf
+                <div class="modal-body">
+                    <textarea name="rejection_remark"
+                              class="form-control"
+                              required
+                              placeholder="Enter rejection reason..."></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Reject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+
+@include('admin-dashboard.include.footer')

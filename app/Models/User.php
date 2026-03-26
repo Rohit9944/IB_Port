@@ -17,7 +17,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'is_prevetting_complete' // ✅ add this
     ];
 
     protected $hidden = [
@@ -27,7 +28,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_prevetting_complete' => 'boolean',
+        'prevetting_company_details' => 'array',
+        'prevetting_documents' => 'array',
     ];
 
-    
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function vessels()
+    {
+        return $this->hasMany(Vessel::class);
+    }
 }

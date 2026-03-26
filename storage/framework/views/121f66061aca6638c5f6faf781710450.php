@@ -20,13 +20,13 @@
 
 <body>
 
-<?php if(session('success')): ?>
+    <?php if(session('success')): ?>
     <div class="alert alert-success alert-dismissible fade show position-fixed top-0 end-0 m-3 z-3 shadow" style="z-index: 1060; max-width: 400px;" role="alert">
         <?php echo e(session('success')); ?>
 
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-<?php endif; ?>
+    <?php endif; ?>
 
     <!-- search canvas -->
     <div class="search-popup offcanvas offcanvas-top" id="offcanvas-search" data-bs-scroll="true">
@@ -71,20 +71,40 @@
                                 <div class="d-flex align-items-center justify-content-between gap-3">
 
                                     <?php if(auth()->guard()->check()): ?>
-                                        <span class="text-info fw-bold me-3"><?php echo e(Auth::user()->first_name); ?> <?php echo e(Auth::user()->last_name); ?></span>
-                                        <form method="POST" action="<?php echo e(route('logout')); ?>" class="d-inline">
-                                            <?php echo csrf_field(); ?>
-                                            <button type="submit" class="btn btn-primary btn-hover border-0 bg-transparent text-info fw-bold p-0">Logout <i class="fa fa-arrow-right ms-1"></i></button>
-                                        </form>
+                                    <span class="text-info fw-bold me-3">
+                                        <?php echo e(Auth::user()->first_name); ?> <?php echo e(Auth::user()->last_name); ?>
+
+                                    </span>
+
+                                    <?php
+                                    $dashboardRoute = match(Auth::user()->role) {
+                                    'cargo_owner' => route('cargo.dashboard'),
+                                    'ship_owner' => route('ship.dashboard'),
+                                    'broker' => route('freight.dashboard'),
+                                    default => '#'
+                                    };
+                                    ?>
+
+                                    <a href="<?php echo e($dashboardRoute); ?>" class="btn btn-success btn-sm me-2">
+                                        Dashboard
+                                    </a>
+
+                                    <!-- LOGOUT -->
+                                    <form method="POST" action="<?php echo e(route('logout')); ?>" class="d-inline">
+                                        <?php echo csrf_field(); ?>
+                                        <button type="submit" class="btn btn-primary border-0 bg-transparent text-info fw-bold p-0">
+                                            <i class="fa fa-arrow-right ms-1"></i>
+                                        </button>
+                                    </form>
+
                                     <?php else: ?>
-                                        <a href="<?php echo e(route('login')); ?>" class="btn btn-primary btn-hover"> Login <i
-                                                class="fa fa-arrow-right"></i>
-                                            <span></span>
-                                        </a>
-                                        <a href="<?php echo e(route('register')); ?>" class="signup btn-hover rounded-5"> Sign
-                                            Up <i class="fa fa-arrow-right"></i>
-                                            <span></span>
-                                        </a>
+                                    <a href="<?php echo e(route('login')); ?>" class="btn btn-primary btn-hover">
+                                        Login <i class="fa fa-arrow-right"></i>
+                                    </a>
+
+                                    <a href="<?php echo e(route('register')); ?>" class="signup btn-hover rounded-5">
+                                        Sign Up <i class="fa fa-arrow-right"></i>
+                                    </a>
                                     <?php endif; ?>
 
                                 </div>
@@ -147,6 +167,4 @@
             </div>
         </div>
     </header>
-    <!-- Header End -->
-
-<?php /**PATH C:\xampp\htdocs\IB_Port\resources\views/include/header.blade.php ENDPATH**/ ?>
+    <!-- Header End --><?php /**PATH C:\xampp\htdocs\IB_Port\resources\views/include/header.blade.php ENDPATH**/ ?>

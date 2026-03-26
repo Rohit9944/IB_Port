@@ -1,125 +1,86 @@
-
 @include('ship-owner.include.header')
 
 <div class="container-fluid page-body-wrapper">
-@include('ship-owner.include.sidebar')
-<div class="main-panel dashboard-page">
-  <div class="content-wrapper">
-    <div class="row dashboard-card-top d-flex align-items-center mb-4">
-      <div class="text-start col-lg-6">
-        <h1 class="mb-0 mainHeading font-weight-bolder">My Vessels</h1>
-      </div>
-      <div class="col-lg-6 text-right d-flex align-items-center justify-content-end headerBtn">
-        <a href="add.html" class="btn btn-primary px-2"><i class="mdi mdi-plus"></i> Add New Vessel</a>
-      </div>
-    </div>
+    @include('ship-owner.include.sidebar')
+    
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title">My Vessels</h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('ship.dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Vessels</li>
+                    </ol>
+                </nav>
+            </div>
 
+        <div class="card">
+            <div class="card-header d-flex justify-content-between">
+                <h4>Vessels List ({{ $vessels->total() }})</h4>
+                <a href="{{ route('ship.vessels.create') }}" class="btn btn-primary">
+                    <i class="mdi mdi-plus"></i> Add Vessel
+                </a>
+            </div>
+            <div class="card-body">
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
 
-    <div class="row flex-grow">
-      <div class="table-responsive  mt-1">
-     
-           <table class="table table-bordered align-middle">
-
-
-
-<thead class="table-light">
-
-<tr>
-
-<th>Vessel ID</th>
-<th>Vessel Name</th>
-<th>IMO Number</th>
-<th>Type</th>
-<th>Capacity</th>
-<th>Current Route</th>
-<th>Status</th>
-<th>Last Updated</th>
-<th>Actions</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td>VES-001</td>
-
-<td>MV Ocean Star</td>
-
-<td>9876543</td>
-
-<td>Bulk Carrier</td>
-
-<td>50,000 Tons</td>
-
-<td>Dubai → Mumbai</td>
-
-<td>
-<span class="badge bg-success">
-Active
-</span>
-</td>
-
-<td>12 Aug 2026</td>
-
-<td>
-<div class="actionBtn d-flex align-items-center justify-content-center gap-1">
-                    <button class="btn btn-outline-secondary btn-fw" data-bs-toggle="modal" data-bs-target="#editModal"><i class="mdi mdi-eye"></i></button>
-                    <a href="add-edit-customer-master.html" class="btn btn-outline-warning btn-fw"><i class="mdi mdi-lead-pencil"></i></a>
-                    <button class="btn btn-outline-danger btn-fw"><i class="mdi mdi-delete"></i></button>
-                </div>
-</td>
-
-</tr>
-
-
-<tr>
-
-<td>VES-002</td>
-
-<td>MV Blue Marine</td>
-
-<td>8765432</td>
-
-<td>Container Ship</td>
-
-<td>40,000 TEU</td>
-
-<td>Singapore → Rotterdam</td>
-
-<td>
-<span class="badge bg-warning">
-Maintenance
-</span>
-</td>
-
-<td>10 Aug 2026</td>
-
-<td>
-<div class="actionBtn d-flex align-items-center justify-content-center gap-1">
-                    <button class="btn btn-outline-secondary btn-fw" data-bs-toggle="modal" data-bs-target="#editModal"><i class="mdi mdi-eye"></i></button>
-                    <a href="add-edit-customer-master.html" class="btn btn-outline-warning btn-fw"><i class="mdi mdi-lead-pencil"></i></a>
-                    <button class="btn btn-outline-danger btn-fw"><i class="mdi mdi-delete"></i></button>
-                </div>
-</td>
-
-</tr>
-
-
-
-
-</tbody>
-
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Capacity</th>
+                                <th>IMO</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($vessels as $vessel)
+                                <tr>
+                                    <td>{{ $vessel->name }}</td>
+                                    <td>{{ $vessel->type }}</td>
+                                    <td>{{ number_format($vessel->capacity, 2) }} DWT</td>
+                                    <td>{{ $vessel->imo_number }}</td>
+                                    <td>
+                                        <span class="badge bg-{{ $vessel->statusBadge() }}">
+                                            {{ ucfirst($vessel->status) }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        @if($vessel->canBeEdited())
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ route('ship.vessels.edit', $vessel) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+                                                <form method="POST" action="{{ route('ship.vessels.destroy', $vessel) }}" class="d-inline" onsubmit="return confirm('Delete?')">
+                                                    @csrf @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        @else
+                                            <span class="text-muted">Approved</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center py-4">
+                                        <i class="mdi mdi-ship mdi-4x text-muted mb-3 d-block"></i>
+                                        <h5 class="text-muted">No vessels yet</h5>
+                                        <p class="text-muted">Add your first vessel above</p>
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
                     </table>
-      </div>
+                </div>
+                {{ $vessels->links() }}
+            </div>
+        </div>
     </div>
-  </div><!-- content-wrapper ends -->
-</div><!-- main-panel ends -->
-
 </div>
-@include('ship-owner.include.footer')
-                    
 
-  
+@include('ship-owner.include.footer')
