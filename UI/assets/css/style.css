@@ -6296,13 +6296,6 @@ section.promo-sec .breadcrumb-item + .breadcrumb-item:before {
 .ct-tab .nav-link:hover .icon-lg {
   background-color: var(--secondary);
 }
-.operation-sec {
-  overflow: hidden;
-  background-size: contain;
-  background-position: 0;
-  background-repeat: no-repeat;
-  z-index: 1;
-}
 .operation-sec .operate-bg.bg-cover.position-absolute {
   left: 0;
 }

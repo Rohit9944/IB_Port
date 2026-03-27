@@ -635,7 +635,7 @@ ul.check li.f-email:before {
   max-height: 20px;
 }
 
-/* team section img */
+/* team section swiper img */
 .team-swiper .quote-img {
   max-width: 35px;
   max-height: 35px;
@@ -669,4 +669,40 @@ footer img {
 
 .single-stat img {
   filter: brightness(30);
+}
+
+/* team section2 ============*/
+@media (min-width:1200px){
+  .team-sec2 .sec-intro{
+    width:35%;
+  }
+}
+
+.team-card2{
+  height:420px;
+  width:350px;
+}
+.team-card2 .team-info{
+  background: #ecf0f1;
+  width:100%;
+  border-radius:20px;
+  position:absolute;
+  padding: 30px 25px;
+  bottom: 0px;
+
+  height:100px;
+  transition: height 0.5s ease;
+}
+.team-card2:hover .team-info{
+  height:auto;
+}
+
+.team-card2 .team-info > p{
+  font-size:12px;
+  opacity:0;
+
+  transition: opacity 0s ease;
+}
+.team-card2:hover .team-info > p{
+  opacity:1;
 }
