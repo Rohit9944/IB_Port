@@ -70,22 +70,27 @@
                             <div class="nav-cta d-none d-md-flex  order-lg-3">
                                 <div class="d-flex align-items-center justify-content-between gap-3">
 
-                                    <?php if(auth()->guard()->check()): ?>
-                                        <span class="text-info fw-bold me-3"><?php echo e(Auth::user()->first_name); ?> <?php echo e(Auth::user()->last_name); ?></span>
-                                        <form method="POST" action="<?php echo e(route('logout')); ?>" class="d-inline">
-                                            <?php echo csrf_field(); ?>
-                                            <button type="submit" class="btn btn-primary btn-hover border-0 bg-transparent text-info fw-bold p-0">Logout <i class="fa fa-arrow-right ms-1"></i></button>
-                                        </form>
-                                    <?php else: ?>
-                                        <a href="<?php echo e(route('login')); ?>" class="btn btn-primary btn-hover"> Login <i
-                                                class="fa fa-arrow-right"></i>
-                                            <span></span>
-                                        </a>
-                                        <a href="<?php echo e(route('register')); ?>" class="signup btn-hover rounded-5"> Sign
-                                            Up <i class="fa fa-arrow-right"></i>
-                                            <span></span>
-                                        </a>
-                                    <?php endif; ?>
+                                  <?php if(auth()->guard()->check()): ?>
+    <span class="fw-bold me-3">
+        <?php echo e(auth()->user()->first_name); ?> <?php echo e(auth()->user()->last_name); ?>
+
+    </span>
+
+    <form method="POST" action="<?php echo e(route('logout')); ?>" class="d-inline">
+        <?php echo csrf_field(); ?>
+        <button type="submit" class="btn border-0 bg-transparent  fw-bold p-0">
+            Logout <i class="fa fa-arrow-right ms-1"></i>
+        </button>
+    </form>
+<?php else: ?>
+    <a href="<?php echo e(route('login')); ?>" class="btn btn-primary btn-hover">
+        Login <i class="fa fa-arrow-right"></i>
+    </a>
+
+    <a href="<?php echo e(route('register')); ?>" class="signup btn-hover rounded-5">
+        Sign Up <i class="fa fa-arrow-right"></i>
+    </a>
+<?php endif; ?>
 
                                 </div>
                             </div>

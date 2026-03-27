@@ -1,21 +1,21 @@
    <!-- plugins:js -->
-<script src="{{ asset('assets/dashboard/vendors/js/vendor.bundle.base.js') }}"></script>
-<script src="{{ asset('assets/dashboard/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+<script src="<?php echo e(asset('assets/dashboard/vendors/js/vendor.bundle.base.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/dashboard/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js')); ?>"></script>
 
 <!-- Plugin js for this page -->
-<script src="{{ asset('assets/dashboard/vendors/chart.js/chart.umd.js') }}"></script>
-<script src="{{ asset('assets/dashboard/vendors/progressbar.js/progressbar.min.js') }}"></script>
+<script src="<?php echo e(asset('assets/dashboard/vendors/chart.js/chart.umd.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/dashboard/vendors/progressbar.js/progressbar.min.js')); ?>"></script>
 
 <!-- inject:js -->
-<script src="{{ asset('assets/dashboard/js/off-canvas.js') }}"></script>
-<script src="{{ asset('assets/dashboard/js/template.js') }}"></script>
-<script src="{{ asset('assets/dashboard/js/settings.js') }}"></script>
-<script src="{{ asset('assets/dashboard/js/hoverable-collapse.js') }}"></script>
-<script src="{{ asset('assets/dashboard/js/todolist.js') }}"></script>
+<script src="<?php echo e(asset('assets/dashboard/js/off-canvas.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/dashboard/js/template.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/dashboard/js/settings.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/dashboard/js/hoverable-collapse.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/dashboard/js/todolist.js')); ?>"></script>
 
 <!-- Custom js -->
-<script src="{{ asset('assets/dashboard/js/jquery.cookie.js') }}"></script>
-<script src="{{ asset('assets/dashboard/js/dashboard.js') }}"></script>
+<script src="<?php echo e(asset('assets/dashboard/js/jquery.cookie.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/dashboard/js/dashboard.js')); ?>"></script>
     
 
     <script>
@@ -179,4 +179,4 @@ chart.render();
 
 
 </body>
-</html> 
+</html> <?php /**PATH C:\xampp\htdocs\IB_Port\resources\views/cargo-owner/include/footer.blade.php ENDPATH**/ ?>

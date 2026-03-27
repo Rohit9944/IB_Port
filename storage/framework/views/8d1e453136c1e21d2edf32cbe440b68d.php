@@ -1,7 +1,6 @@
-<?php include 'include/header.php'; ?>
-
+<?php echo $__env->make('cargo-owner.include.header', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 <div class="container-fluid page-body-wrapper">
-    <?php include 'include/sidebar.php'; ?>
+    <?php echo $__env->make('cargo-owner.include.sidebar', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
     <div class="main-panel dashboard-page">
         <div class="content-wrapper">
@@ -200,8 +199,7 @@
 </div>
 
 
-<?php include 'include/footer.php'; ?>
-
+<?php echo $__env->make('cargo-owner.include.footer', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
 
 <script>

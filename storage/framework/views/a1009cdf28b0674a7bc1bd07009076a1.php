@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>IBPortDash Dashbard </title>
     <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/feather/feather.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/mdi/css/materialdesignicons.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/dashboard/vendors/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/dashboard/vendors/feather/feather.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/dashboard/vendors/mdi/css/materialdesignicons.min.css')); ?>">
+        <link rel="stylesheet" href="<?php echo e(asset('assets/dashboard/vendors/font-awesome/css/font-awesome.min.css')); ?>">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="{{asset('assets/dashboard/css/style.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/dashboard/css/style.css')); ?>">
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{asset('assets/dashboard/images/favicon.png')}}" />
+    <link rel="shortcut icon" href="<?php echo e(asset('assets/dashboard/images/favicon.png')); ?>" />
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   </head>
   <body class="with-welcome-text">
@@ -25,7 +25,7 @@
    
     <div>
       <a class="navbar-brand brand-logo" href="index.html">
-        <img src="{{asset('assets/dashboard/images/logo.svg')}}" alt="IBPortDash" />
+        <img src="<?php echo e(asset('assets/dashboard/images/logo.svg')); ?>" alt="IBPortDash" />
       </a>
     </div>
   </div>
@@ -95,7 +95,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img src="{{asset('public/assets/dashboard/images/faces/face10.jpg')}}" alt="image" class="img-sm profile-pic">
+              <img src="<?php echo e(asset('public/assets/dashboard/images/faces/face10.jpg')); ?>" alt="image" class="img-sm profile-pic">
             </div>
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis fw-medium text-dark">Marian Garner </p>
@@ -104,7 +104,7 @@
           </a>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img src="{{asset('public/assets/dashboard/assets/images/faces/face12.jpg')}}" alt="image" class="img-sm profile-pic">
+              <img src="<?php echo e(asset('public/assets/dashboard/assets/images/faces/face12.jpg')); ?>" alt="image" class="img-sm profile-pic">
             </div>
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis fw-medium text-dark">David Grey </p>
@@ -113,7 +113,7 @@
           </a>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img src="{{asset('assets/dashboard/assets/images/faces/face1.jpg')}}" alt="image" class="img-sm profile-pic">
+              <img src="<?php echo e(asset('assets/dashboard/assets/images/faces/face1.jpg')); ?>" alt="image" class="img-sm profile-pic">
             </div>
             <div class="preview-item-content flex-grow py-2">
               <p class="preview-subject ellipsis fw-medium text-dark">Travis Jenkins </p>
@@ -127,7 +127,7 @@
           <img class="img-xs rounded-circle" src="http://localhost:8080/IB-Port/assets/images/faces/face8.jpg" alt="Profile image"> </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
           <div class="dropdown-header text-center">
-            <img class="img-md rounded-circle" src="{{asset('assets/dashboard/assets/images/faces/face8.jpg')}}" alt="Profile image">
+            <img class="img-md rounded-circle" src="<?php echo e(asset('assets/dashboard/assets/images/faces/face8.jpg')); ?>" alt="Profile image">
             <p class="mb-1 mt-3 fw-semibold">Allen Moreno</p>
             <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
           </div>
@@ -146,4 +146,4 @@
     </button>
   </div>
 </nav>
-</header>
+</header><?php /**PATH C:\xampp\htdocs\IB_Port\resources\views/admin-dashboard/include/header.blade.php ENDPATH**/ ?>

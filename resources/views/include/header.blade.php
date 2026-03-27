@@ -69,22 +69,26 @@
                             <div class="nav-cta d-none d-md-flex  order-lg-3">
                                 <div class="d-flex align-items-center justify-content-between gap-3">
 
-                                    @auth
-                                        <span class="text-info fw-bold me-3">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</span>
-                                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                                            @csrf
-                                            <button type="submit" class="btn btn-primary btn-hover border-0 bg-transparent text-info fw-bold p-0">Logout <i class="fa fa-arrow-right ms-1"></i></button>
-                                        </form>
-                                    @else
-                                        <a href="{{ route('login') }}" class="btn btn-primary btn-hover"> Login <i
-                                                class="fa fa-arrow-right"></i>
-                                            <span></span>
-                                        </a>
-                                        <a href="{{ route('register') }}" class="signup btn-hover rounded-5"> Sign
-                                            Up <i class="fa fa-arrow-right"></i>
-                                            <span></span>
-                                        </a>
-                                    @endauth
+                                  @auth
+    <span class="fw-bold me-3">
+        {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}
+    </span>
+
+    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+        @csrf
+        <button type="submit" class="btn border-0 bg-transparent  fw-bold p-0">
+            Logout <i class="fa fa-arrow-right ms-1"></i>
+        </button>
+    </form>
+@else
+    <a href="{{ route('login') }}" class="btn btn-primary btn-hover">
+        Login <i class="fa fa-arrow-right"></i>
+    </a>
+
+    <a href="{{ route('register') }}" class="signup btn-hover rounded-5">
+        Sign Up <i class="fa fa-arrow-right"></i>
+    </a>
+@endauth
 
                                 </div>
                             </div>
