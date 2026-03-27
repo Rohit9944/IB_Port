@@ -1,0 +1,14 @@
+/* css files */
+@import url(reset.css);
+@import url(bootstrap.min.css);
+@import url(fancybox.css);
+@import url(swiper-bundle.min.css);
+@import url(all.min.css);
+@import url(jarallax.min.css);
+@import url(nice-select.css);
+@import url(jquery.datepicker.css);
+@import url(jquery.timepicker.min.css);
+
+/* Style CSS */
+@import url(style.css);
+@import url(custom.css);
