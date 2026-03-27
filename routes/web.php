@@ -68,57 +68,35 @@ Route::post('/email/verification-notification', function (Request $request) {
 */
 
 Route::prefix('admin-dashboard')->name('admin.')->group(function () {
-
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::get('ai-insights', [AdminDashboardController::class, 'aiInsights'])->name('ai-insights');
     Route::get('analytics', [AdminDashboardController::class, 'analytics'])->name('analytics');
-
-    // Contracts
     Route::get('contracts', [AdminDashboardController::class, 'contractsIndex'])->name('contracts.index');
     Route::get('contracts/add', [AdminDashboardController::class, 'contractsAdd'])->name('contracts.add');
     Route::get('contracts/edit', [AdminDashboardController::class, 'contractsEdit'])->name('contracts.edit');
     Route::get('contracts/view', [AdminDashboardController::class, 'contractsView'])->name('contracts.view');
-
-    // Port Operations
     Route::get('port-operations', [AdminDashboardController::class, 'portOperationsIndex'])->name('port-operations.index');
     Route::get('port-operations/add', [AdminDashboardController::class, 'portOperationsAdd'])->name('port-operations.add');
-    Route::get('port-operations/edit', [AdminDashboardController::class, 'portOperationsAdd'])->name('port-operations.edit');
+    Route::get('port-operations/edit', [AdminDashboardController::class, 'portOperationsEdit'])->name('port-operations.edit');
     Route::get('port-operations/view', [AdminDashboardController::class, 'portOperationsView'])->name('port-operations.view');
-
     Route::get('reports', [AdminDashboardController::class, 'reportsIndex'])->name('reports');
-
-    // RFQ
     Route::get('rfq-requests', [AdminDashboardController::class, 'rfqRequestsIndex'])->name('rfq-requests.index');
     Route::get('rfq-requests/add', [AdminDashboardController::class, 'rfqRequestsAdd'])->name('rfq-requests.add');
     Route::get('rfq-requests/edit', [AdminDashboardController::class, 'rfqRequestsEdit'])->name('rfq-requests.edit');
     Route::get('rfq-requests/view', [AdminDashboardController::class, 'rfqRequestsView'])->name('rfq-requests.view');
-
     Route::get('settings', [AdminDashboardController::class, 'settingsIndex'])->name('settings');
-
-    // Ship Owners
     Route::get('ship-owners', [AdminDashboardController::class, 'shipOwnersIndex'])->name('ship-owners');
-    Route::get('ship-owners/add', [AdminDashboardController::class, 'shipOwnersAdd'])->name('ship-owners.add');
-    Route::get('ship-owners/edit', [AdminDashboardController::class, 'shipOwnersEdit'])->name('ship-owners.edit');
-    Route::get('ship-owners/view', [AdminDashboardController::class, 'shipOwnersView'])->name('ship-owners.view');
-
-    // Shipments
     Route::get('shipments', [AdminDashboardController::class, 'shipmentsIndex'])->name('shipments.index');
     Route::get('shipments/add', [AdminDashboardController::class, 'shipmentsAdd'])->name('shipments.add');
     Route::get('shipments/edit', [AdminDashboardController::class, 'shipmentsEdit'])->name('shipments.edit');
-    Route::get('shipments/view', [AdminDashboardController::class, 'shipments.edit'])->name('shipments.view');
-
-    // Users Cargo Listing
+    Route::get('shipments/view', [AdminDashboardController::class, 'shipmentsView'])->name('shipments.view');
     Route::get('users/cargo-listing', [AdminDashboardController::class, 'usersCargoListingIndex'])->name('users.cargo-listing');
-    Route::get('users/cargo-listing/add', [AdminDashboardController::class, 'usersCargoListingAdd'])->name('users.cargo-listing.add');
-    Route::get('users/cargo-listing/edit', [AdminDashboardController::class, 'usersCargoListingAdd'])->name('users.cargo-listing.edit');
-    Route::get('users/cargo-listing/view', [AdminDashboardController::class, 'shipOwnersView'])->name('users.cargo-listing.view');
-
-    // Users Cargo Owners
     Route::get('users/cargo-owners', [AdminDashboardController::class, 'usersCargoOwnersIndex'])->name('users.cargo-owners');
-    Route::get('users/cargo-owners/add', [AuthController::class, 'usersCargoOwnersAdd'])->name('users.cargo-owners.add');
-    Route::get('users/cargo-owners/edit', [AdminDashboardController::class, 'usersCargoOwnersEdit'])->name('users.cargo-owners.edit');
-    Route::get('users/cargo-owners/view', [AdminDashboardController::class, 'usersCargoOwnersView'])->name('users.cargo-owners.view');
+    Route::get('users/freight-forwarder', [AdminDashboardController::class, 'usersFreightForwarderIndex'])->name('users.freight-forwarder');
+    Route::get('vessels', [AdminDashboardController::class, 'vesselsIndex'])->name('vessels.index');
+    Route::get('/admin/login', function () { return view('admin.auth.login');})->name('admin.login');
 });
+
 
 
 /*
@@ -129,23 +107,35 @@ Route::prefix('admin-dashboard')->name('admin.')->group(function () {
 
 Route::prefix('cargo-owner')->name('cargo.')->group(function () {
     Route::get('/', [CargoDashboardController::class, 'index'])->name('dashboard');
-    Route::get('contracts', [CargoDashboardController::class, 'contractsIndex'])->name('contracts.index');
+    Route::get('contracts', [CargoDashboardController::class, 'contractsIndex'])->name('contracts');
     Route::get('contracts/view', [CargoDashboardController::class, 'contractsView'])->name('contracts.view');
-    Route::get('earnings', [AuthController::class, 'earningsIndex'])->name('earnings');
+    Route::get('earnings', [CargoDashboardController::class, 'earningsIndex'])->name('earnings');
+    Route::get('shipments', [CargoDashboardController::class, 'shipmentsIndex'])->name('shipments');
     Route::get('tracking', [CargoDashboardController::class, 'tracking'])->name('tracking');
+    Route::get('rfq', [CargoDashboardController::class, 'rfqIndex'])->name('rfq');
+    Route::get('offers', [CargoDashboardController::class, 'offersIndex'])->name('offers');
+    Route::get('messages', [CargoDashboardController::class, 'messages'])->name('messages');
+    Route::get('reports', [CargoDashboardController::class, 'reports'])->name('reports');
+    Route::get('freight-calculator', [CargoDashboardController::class, 'freightCalculator'])->name('freight-calculator');
+    Route::get('settings', [CargoDashboardController::class, 'settings'])->name('settings');
 });
 
 
-/*
-|--------------------------------------------------------------------------
-| FREIGHT FORWARDER
-|--------------------------------------------------------------------------
-*/
 
 Route::prefix('freight-forwarder')->name('freight.')->group(function () {
     Route::get('/', [FreightDashboardController::class, 'index'])->name('dashboard');
     Route::get('shipments', [FreightDashboardController::class, 'shipmentsIndex'])->name('shipments');
     Route::get('tracking', [FreightDashboardController::class, 'tracking'])->name('tracking');
+    Route::get('rfqs', [FreightDashboardController::class, 'rfqManagementIndex'])->name('rfqs');
+    Route::get('offers-received', [FreightDashboardController::class, 'offersReceivedIndex'])->name('offers-received');
+    Route::get('contracts', [FreightDashboardController::class, 'contractsIndex'])->name('contracts');
+    Route::get('documents', [FreightDashboardController::class, 'documents'])->name('documents');
+    Route::get('messages', [FreightDashboardController::class, 'messages'])->name('messages');
+    Route::get('analytics-reports', [FreightDashboardController::class, 'analyticsReports'])->name('analytics-reports');
+    Route::get('payments', [FreightDashboardController::class, 'payments'])->name('payments');
+    Route::get('freight-calculator', [FreightDashboardController::class, 'freightCalculator'])->name('freight-calculator');
+    Route::get('settings', [FreightDashboardController::class, 'settings'])->name('settings');
+    Route::get('customs-clearance', [FreightDashboardController::class, 'customsClearanceIndex'])->name('customs-clearance');
 });
 
 
@@ -154,10 +144,17 @@ Route::prefix('freight-forwarder')->name('freight.')->group(function () {
 | SHIP OWNER
 |--------------------------------------------------------------------------
 */
-
 Route::prefix('ship-owner')->name('ship.')->group(function () {
     Route::get('/', [ShipDashboardController::class, 'index'])->name('dashboard');
     Route::get('cargo-requests', [ShipDashboardController::class, 'cargoRequestsIndex'])->name('cargo-requests');
     Route::get('contracts', [ShipDashboardController::class, 'contractsIndex'])->name('contracts');
     Route::get('tracking', [ShipDashboardController::class, 'tracking'])->name('tracking');
+    Route::get('shipments', [ShipDashboardController::class, 'shipmentsIndex'])->name('shipments');
+    Route::get('port-schedule', [ShipDashboardController::class, 'portScheduleIndex'])->name('port-schedule');
+    Route::get('messages', [ShipDashboardController::class, 'messages'])->name('messages');
+    Route::get('notifications', [ShipDashboardController::class, 'notifications'])->name('notifications');
+    Route::get('offers-sent', [ShipDashboardController::class, 'offersSentIndex'])->name('offers-sent');
+    Route::get('rfq-requests', [ShipDashboardController::class, 'rfqRequestsIndex'])->name('rfq-requests');
+    Route::get('settings', [ShipDashboardController::class, 'settings'])->name('settings');
+    Route::get('vessels', [ShipDashboardController::class, 'vesselsIndex'])->name('vessels');
 });
