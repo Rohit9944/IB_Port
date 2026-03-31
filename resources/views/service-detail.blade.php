@@ -1,4 +1,4 @@
-@include('inlcude.header')
+@include('include.header')
 
     <!-- Services Section Start -->
     <div class="single-service bg-shade sec-padding">
@@ -164,4 +164,4 @@
     </div>
     <!-- brands slider END -->
 
-   @include('inlcude.footer')
+   @include('include.footer')

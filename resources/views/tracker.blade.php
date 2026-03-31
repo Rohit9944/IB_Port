@@ -12,7 +12,7 @@
                             <span
                                 class="sub-title text-secondary fadeInUp w-auto d-flex justify-content-center align-items-center"
                                 style="transform: translate(0px, 0px); opacity: 1;">
-                                <img src="/assets/images/icons/truck-w.svg" alt="" class="img-fluid truck-w-img">
+                                <img src="{{ asset('assets/images/icons/truck-w.svg') }}" alt="" class="img-fluid truck-w-img">
                                 &nbsp;
                                 tracking</span>
 
@@ -38,7 +38,7 @@
             </div>
             <div id="jarallax-container-1" class="jarallax-container"
                 style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; overflow: hidden; z-index: -100; clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0px 100%);">
-                <img src="/assets/images/tracking-bg.jpg" alt="" class="jarallax-img"
+                <img src="{{ asset('assets/images/tracking-bg.jpg') }}" alt="" class="jarallax-img"
                     style="object-fit: cover; object-position: 50% 50%; max-width: none; position: fixed; top: 0px; left: 0px; width: 1440px; height: 1153.44px; overflow: hidden; pointer-events: none; transform-style: preserve-3d; backface-visibility: hidden; margin-top: 57.28px; transform: translate3d(0px, -32.76px, 0px);">
             </div>
         </div>
@@ -48,7 +48,7 @@
             <div class="container">
                 <div class="row trackign-form-wrapper">
                     <div class="col-lg-12">
-                        <div class="tracking-tabs">
+                        <div class="tracking-tabs mb-3">
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active" id="request-quote-tab" data-bs-toggle="tab"
@@ -76,17 +76,17 @@
                                         <div class="form-group d-flex gap-2 align-items-center">
                                             <input class="form-check-input" type="radio" name="freightType" id="air"
                                                 value="air" checked="">
-                                            <label class="form-check-label mb-0" for="air">Air Freight</label>
+                                            <label class="form-check-label fs-6 mb-0" for="air">Air Freight</label>
                                         </div>
                                         <div class="form-group d-flex gap-2 align-items-center">
                                             <input class="form-check-input" type="radio" name="freightType" id="ocean"
                                                 value="ocean">
-                                            <label class="form-check-label mb-0" for="ocean">Ocean Freight</label>
+                                            <label class="form-check-label fs-6 mb-0" for="ocean">Ocean Freight</label>
                                         </div>
                                         <div class="form-group d-flex gap-2 align-items-center">
                                             <input class="form-check-input" type="radio" name="freightType" id="land"
                                                 value="land">
-                                            <label class="form-check-label mb-0" for="land">Land Freight</label>
+                                            <label class="form-check-label fs-6 mb-0" for="land">Land Freight</label>
                                         </div>
                                     </div>
                                     <div class="row form-inner">
@@ -143,7 +143,7 @@
                                                 <p class="m-0">Note: Face any trouble? We wil contact with You as soon
                                                     as
                                                     possible ||
-                                                    <a href="contact.html" class="text-primary">Contact Our Expert</a>
+                                                    <a href="{{ route('contact') }}" class="text-primary">Contact Our Expert</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -178,11 +178,11 @@
                                         <p class="fw-light small">Note: Face any trouble? We wil contact with You as
                                             soon as
                                             possible ||
-                                            <a href="contact.html" class="text-primary">Contact Our Expert</a>
+                                            <a href="{{ route('contact') }}" class="text-primary">Contact Our Expert</a>
                                         </p>
                                     </div>
                                     <div class="img-end">
-                                        <img class="img-fluid " src="images/booking.png" alt="">
+                                        <img class="img-fluid " src="{{ asset('assets/images/booking.png') }}" alt="">
                                     </div>
                                 </div>
                             </div>

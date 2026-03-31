@@ -1,4 +1,4 @@
-@include('inlcude.header')
+@include('include.header')
 
     <!-- CONTENT -->
     <section class="privacy-sec pt-5">
@@ -8,7 +8,7 @@
                     <div class="col-lg-12">
                         <article class="post-single">
                             <figure class="post-thumb">
-                                <img src="/assets/images/single-post.jpg" alt="blog" class="img-fluid">
+                                <img src="{{ asset('assets/images/single-post.jpg') }}" alt="blog" class="img-fluid">
                             </figure>
 
                             <h4 class="display-4 mt-4 mb-0 fw-semibold">Introduction</h4>
@@ -34,8 +34,8 @@
                             </p>
 
                             <div class="my-5 p-gallery d-sm-flex gap-5">
-                                <img src="/assets/images/gal1.jpg" alt="" class="img-fluid round">
-                                <img src="/assets/images/gal2.jpg" alt="" class="img-fluid round">
+                                <img src="{{ asset('assets/images/gal1.jpg') }}" alt="" class="img-fluid round">
+                                <img src="{{ asset('assets/images/gal2.jpg') }}" alt="" class="img-fluid round">
                             </div>
 
                             <h4 class="display-4 mt-4 mb-0 fw-semibold">How We Use Your Information</h4>
@@ -119,7 +119,7 @@
                             </p>
 
                             <p>
-                                Email: info@Ibport.ca<br>
+                                Email: info@ibportdash.ca<br>
                                 Phone: +1 (000) 123-4567
                             </p>
 
@@ -136,4 +136,4 @@
         </div>
     </section>
 
-    @include('inlcude.footer')
+    @include('include.footer')
