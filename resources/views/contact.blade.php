@@ -25,12 +25,12 @@
                 <div class="col-xl-4">
                     <div class="contact-card d-flex">
                         <span class="icon bg-shade rounded-3">
-                            <img src="/assets/images/icons/headphone.svg" alt="">
+                            <img src="{{ asset('assets/images/icons/headphone.svg') }}" alt="">
                         </span>
                         <div class="contact-info">
                             <ul>
                                 <li><strong>Phone :</strong> <a href="tel:8292393838"> +66 58 256 978</a></li>
-                                <li><strong>Email :</strong> <a href="mailto:info@Ibport.ca">info@Ibport.ca</a>
+                                <li><strong>Email :</strong> <a href="mailto:info@ibportdash.ca">info@ibportdash.ca</a>
                                 </li>
                             </ul>
                             <a href="#" class="ct-url">Send your mail <i class="fa-solid fa-angles-right"></i></a>
@@ -40,7 +40,7 @@
                 <div class="col-xl-4">
                     <div class="contact-card d-flex">
                         <span class="icon bg-shade rounded-3">
-                            <img src="/assets/images/icons/watch.svg" alt="">
+                            <img src="{{ asset('assets/images/icons/watch.svg') }}" alt="">
                         </span>
                         <div class="contact-info">
                             <ul>
@@ -55,7 +55,7 @@
                 <div class="col-xl-4">
                     <div class="contact-card d-flex">
                         <span class="icon bg-shade rounded-3">
-                            <img src="/assets/images/icons/watch.svg" alt="">
+                            <img src="{{ asset('assets/images/icons/watch.svg') }}" alt="">
                         </span>
                         <div class="contact-info">
                             <ul>
@@ -78,7 +78,7 @@
             <div class="row contact-form-wrap">
                 <div class="col-12">
                     <div class="contact-form round"
-                        style="background: url(/assets/images/form-bg2.jpg)no-repeat center center / cover;">
+                        style="background: url({{ asset('assets/images/slider1.jpg') }}) no-repeat center center / cover;">
                         <div class="form-inner round">
                             <form id="ajax-contact" method="post" action="mailer.php">
                                 <div class="row">
@@ -132,7 +132,7 @@
 
                                     <!-- Submit Button -->
                                     <div class="col-12 mt-3">
-                                        <button type="submit" class="round signup w-100">
+                                        <button type="submit" class="btn btn-primary w-100">
                                             Submit Request <i class="fa fa-arrow-right"></i>
                                         </button>
                                     </div>
