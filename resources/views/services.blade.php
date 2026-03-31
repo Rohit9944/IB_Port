@@ -199,30 +199,31 @@
     <!-- Services Section End -->
 
     <!-- FAQ Section Start -->
-    <section class="faq-sec overflow-hidden sec-padding position-relative">
+    <section class="faq-sec overflow-hidden sec-padding position-relative">       
         <div class="container">
-            <div class="sec-intro mx-auto text-center">
+            <div class="sec-intro mx-auto text-center mb-4">
                 <span class="sub-title2 fadeInUp">Our faq</span>
                 <h2 class="sec-title">What Details Are Required for a Quote?</h2>
             </div>
             <div class="row gy-4">
-                <div class="col-lg-7">
+                <div class="col-12 col-lg-9 mx-auto">
                     <div class="faq-accordion rounded-4" id="tv-accordion">
                         <div class="accordion-item active">
                             <h4 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    How does IBPortDash help with ship chartering?
+                                    Does IBPortDash Accept Credit Card?
                                 </button>
                             </h4>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                 role="tabpanel" data-bs-parent="#tv-accordion">
                                 <div class="accordion-body">
                                     <p>
-                                        IBPortDash connects cargo owners and ship operators on one
-                                        platform, enabling
-                                        faster cargo-to-vessel matching, negotiations, and digital
-                                        contract management.
+                                        IBPortDash currently accepts multiple payment methods, including credit cards.
+                                        We understand the importance of providing
+                                        flexible payment options for our users, and accepting credit cards is one of the
+                                        convenient ways to make transactions on
+                                        our platform.
                                     </p>
                                 </div>
                             </div>
@@ -231,20 +232,13 @@
                             <h4 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How does the platform verify shipping partners?
+                                    Can the shippers address on the bill of lading be in another country ?
                                 </button>
                             </h4>
                             <div id="collapseTwo" class="accordion-collapse collapse" role="tabpanel"
                                 aria-labelledby="headingTwo" data-bs-parent="#tv-accordion">
                                 <div class="accordion-body">
-                                    <p>Meeting project deadlines is a top priority. We understand the
-                                        importance of
-                                        timely
-                                        delivery and have established a comprehensive approach to ensure
-                                        that all
-                                        projects
-                                        are
-                                        completed</p>
+                                    <p>Yes, the shipper address on the bill of lading can be in another country.</p>
                                 </div>
                             </div>
                         </div>
@@ -252,96 +246,23 @@
                             <h4 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Can I track vessel movements on the platform?
+                                    How Long Does It Take To Register A Vessel?
                                 </button>
                             </h4>
                             <div id="collapseThree" class="accordion-collapse collapse" role="tabpanel"
                                 aria-labelledby="headingThree" data-bs-parent="#tv-accordion">
                                 <div class="accordion-body">
-                                    <p>Meeting project deadlines is a top priority. We understand the
-                                        importance of
-                                        timely
-                                        delivery and have established a comprehensive approach to ensure
-                                        that all
-                                        projects
-                                        are
-                                        completed</p>
-                                </div>
-                            </div>
-                        </div> <!-- Item End -->
-                        <div class="accordion-item">
-                            <h4 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    How are charter negotiations conducted?
-                                </button>
-                            </h4>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                role="tabpanel" data-bs-parent="#tv-accordion">
-                                <div class="accordion-body">
-                                    <p>Meeting project deadlines is a top priority. We understand the
-                                        importance of
-                                        timely
-                                        delivery and have established a comprehensive approach to ensure
-                                        that all
-                                        projects
-                                        are
-                                        completed</p>
-                                </div>
-                            </div>
-                        </div> <!-- Item End -->
-                        <div class="accordion-item">
-                            <h4 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    What is the pricing model for IBPortDash?
-                                </button>
-                            </h4>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                                role="tabpanel" data-bs-parent="#tv-accordion">
-                                <div class="accordion-body">
-                                    <p>Teachers play a central role in education. They impart knowledge,
-                                        facilitate
-                                        learning, and
-                                        help students develop
-                                        critical thinking skills. Teachers also contribute to the social
-                                        and emotional
-                                        development
-                                        of
-                                        students.</p>
+                                    <p>Registering a vessel on IBPortDash is a straightforward process designed to
+                                        minimize hassle and ensure efficiency for
+                                        our users. The time it takes to complete the registration process may vary
+                                        depending on several factors, but we strive
+                                        to make it as quick and seamless as possible. The entire process, from account
+                                        creation to vessel registration approval,
+                                        can generally be completed within 1-2 days.</p>
                                 </div>
                             </div>
                         </div> <!-- Item End -->
                     </div>
-                </div>
-                <div class="col-lg-5">
-                    <form>
-                        <div class="contact-form rounded-4 position-relative">
-
-                            <h3 class="display-4 mb-3">Make An Appointment</h3>
-                            <div class="form-group">
-                                <input type="text" placeholder="Your name">
-                                <i class="fa-regular fa-user"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="Your email">
-                                <i class="fa-regular fa-envelope"></i>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" placeholder="Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" placeholder="Company Name">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" placeholder="Cargo Type / Shipment Details">
-                                <i class="fa-regular fa-clipboard"></i>
-                            </div>
-                            <button class="btn btn-primary btn-lg w-100 mt-2">Book An Appointment <i
-                                    class="fa fa-arrow-right"></i>
-                                <span></span></button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
