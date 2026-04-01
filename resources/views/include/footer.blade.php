@@ -73,8 +73,8 @@
                 </p>
                 <nav class="footer-nav order-1 order-md-2">
                     <ul>
-                        <li><a href="privacy.html" class="py-0">Privacy Policy </a></li>
-                        <li><a href="tnc.html" class="py-0">Terms & Condition</a></li>
+                        <li><a href="{{ route('privacy') }}" class="py-0">Privacy Policy </a></li>
+                        <li><a href="{{ route('tnc') }}" class="py-0">Terms & Condition</a></li>
                     </ul>
                 </nav>
             </div>
